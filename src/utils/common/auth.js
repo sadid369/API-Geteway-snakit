@@ -20,7 +20,17 @@ function checkPassword (plainPassword, encryptedPassword) {
     }
 }
 
+function verifyToken (token) {
+    try {
+        return jwt.verify(token, JWT_SECRET);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 module.exports = {
     checkPassword,
-    createToken
+    createToken,
+    verifyToken
 };
